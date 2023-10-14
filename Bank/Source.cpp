@@ -55,6 +55,14 @@ void BankAccount::Make_Acc() {
 	//Account[nTotal_Account].BankAccount(id, name, money);
 	nTotal_Account++;
 }
+void BankAccount::CInit(int id, const char* name, int money) {
+	AccNo = id;
+	this->money = money;
+
+	strcpy(ClientName, name);
+
+}
+
 void BankAccount::Deposit() {
 	int id, money;
 	
@@ -88,13 +96,55 @@ void CShowMenu() {
 
 }
 
+void CMake() {
+
+	int id, money;
+	char name[NAME_LEN];
+	cout << "[계좌개설]" << endl;
+	cout << "계좌 ID: "; cin >> id;
+
+	cout << "이 름: "; cin >> name;
+
+
+	cout << "입금액: "; cin >> money;
+	cout << endl;
+
+	Account[nTotal_Account].CInit(id, name, money);
+	nTotal_Account++;
+
+}
+
+void CDeposit() {
+	int id, money;
+
+	cout << "[입    금]" << endl;
+	cout << "계좌ID: "; cin >> id;
+
+	cout << "입금액: "; cin >> money;
+
+	for (int i = 0; i < nTotal_Account; i++) {
+		if (Account[i].AccNo == id){
+			Account[i].money += money;
+			cout << "입금완료";
+		}
+	}
+	cout << endl;
+}
+
+void CWithDraw() {
+
+}
+
+void CInfo() {
+
+}
+
 int main()
 {
 	int choice;
 	bool m_bExit = false;
 
-	do
-	{
+	do{
 		CShowMenu();
 		cout << "선택: ";
 		cin >> choice;
@@ -103,12 +153,13 @@ int main()
 		{
 		case BANK_MENU::MAKE:
 		{
-			//CMake();
+			CMake();
 			break;
 		}
 		case BANK_MENU::DEPOSIT:
 		{
-			//CDeposit();
+			CDeposit();
+			break;
 		}
 		case BANK_MENU::WITHDRAW:
 		{
@@ -121,7 +172,7 @@ int main()
 		}
 		case BANK_MENU::EXIT:
 		{
-			//Exit
+			m_bExit = true;
 		}
 		}
 	} while (!m_bExit);

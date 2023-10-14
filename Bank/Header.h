@@ -29,7 +29,7 @@ public:
 
 class BankAccount 
 {
-private:
+public:
 	int AccNo;
 	char* ClientName;
 	int   money;
@@ -59,7 +59,7 @@ public:
 	void Make_Acc();
 	void Deposit();
 	void WithDraw();
-
+	void CInit(int id, const char* name, int money);
 
 	void PrintAccInfo(); 
 

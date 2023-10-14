@@ -1,0 +1,6 @@
+﻿  Source.cpp
+c:\projects\2015\bank\bank\header.h(49): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\projects\2015\bank\bank\source.cpp(78): warning C4101: 'choice': unreferenced local variable
+  Bank.vcxproj -> C:\Projects\2015\Bank\Debug\Bank.exe
+  Bank.vcxproj -> C:\Projects\2015\Bank\Debug\Bank.pdb (Full PDB)

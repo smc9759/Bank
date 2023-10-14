@@ -6,6 +6,10 @@ using namespace std;
 
 const int NAME_LEN = 20;
 
+
+BankAccount Account[100];
+int nTotal_Account = 0;
+
 class BankAccount;
 
 class Bank {
@@ -50,8 +54,8 @@ public:
 
 		this->money = money;
 	}
-
-	void SelectMenu(int input);
+	void ShowMenu();
+	void SelectMenu();
 
 
 	void Make_Acc();

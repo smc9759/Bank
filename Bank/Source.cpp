@@ -1,7 +1,7 @@
 #include "Header.h"
 
 
-void ShowMenu() {
+void BankAccount::ShowMenu() {
 
 
 	cout << "-----Menu-----" << endl;
@@ -11,9 +11,15 @@ void ShowMenu() {
 	cout << "4. 계좌정보 전체 출력" << endl;
 	cout << "5. 프로그램 종료" << endl;
 
+	SelectMenu();
 }
-void BankAccount::SelectMenu(int input)
+void BankAccount::SelectMenu()
 {
+	int input;
+	cout << "선택: ";
+
+	cin >> input;
+
 	switch (input)
 	{
 	case BANK_MENU::MAKE:
@@ -32,6 +38,8 @@ void BankAccount::SelectMenu(int input)
 	}
 	}
 }
+
+
 void BankAccount::Make_Acc() {
 	int id, money;
 	char name[NAME_LEN];
@@ -44,9 +52,8 @@ void BankAccount::Make_Acc() {
 	cout << "입금액: "; cin >> money;
 	cout << endl;
 
-	BankAccount(id, name, money);
-
-	ShowMenu();
+	Account[nTotal_Account].BankAccount(id, name, money);
+	nTotal_Account++;
 }
 void BankAccount::Deposit() {
 	int id, money;
@@ -70,36 +77,9 @@ void BankAccount::PrintAccInfo() {
 
 }
 
-BankAccount Account[100];
-int acc_num = 0;
 
 int main()
 {
-	int choice;
-
-	while (1) {
-		ShowMenu();
-		cout << "선택: ";
-
-		cin >> choice;
-
-		switch (choice) 
-		{
-		case BANK_MENU::MAKE:
-		{
-			//Make_Acc();
-			break;
-		}
-		case BANK_MENU::DEPOSIT:
-		{
-			//deposit();
-		}
-		case BANK_MENU::INFO:
-		{
-			//PrintAccInfo();
-			break;
-		}
-		}
-	}
+	Account[nTotal_Account].ShowMenu();	
 	return 0;
 }

@@ -52,7 +52,7 @@ void BankAccount::Make_Acc() {
 	cout << "입금액: "; cin >> money;
 	cout << endl;
 
-	Account[nTotal_Account].BankAccount(id, name, money);
+	//Account[nTotal_Account].BankAccount(id, name, money);
 	nTotal_Account++;
 }
 void BankAccount::Deposit() {
@@ -77,9 +77,54 @@ void BankAccount::PrintAccInfo() {
 
 }
 
+void CShowMenu() {
+
+	cout << "-----Menu-----" << endl;
+	cout << "1. 계좌개설" << endl;
+	cout << "2. 입 금" << endl;
+	cout << "3. 출 금" << endl;
+	cout << "4. 계좌정보 전체 출력" << endl;
+	cout << "5. 프로그램 종료" << endl;
+
+}
 
 int main()
 {
-	Account[nTotal_Account].ShowMenu();	
+	int choice;
+	bool m_bExit = false;
+
+	do
+	{
+		CShowMenu();
+		cout << "선택: ";
+		cin >> choice;
+
+		switch (choice)
+		{
+		case BANK_MENU::MAKE:
+		{
+			//CMake();
+			break;
+		}
+		case BANK_MENU::DEPOSIT:
+		{
+			//CDeposit();
+		}
+		case BANK_MENU::WITHDRAW:
+		{
+			//CWithDraw();
+		}
+		case BANK_MENU::INFO:
+		{
+			//CInfo();
+			break;
+		}
+		case BANK_MENU::EXIT:
+		{
+			//Exit
+		}
+		}
+	} while (!m_bExit);
+
 	return 0;
 }

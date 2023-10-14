@@ -7,10 +7,8 @@ using namespace std;
 const int NAME_LEN = 20;
 
 
-BankAccount Account[100];
-int nTotal_Account = 0;
 
-class BankAccount;
+//class BankAccount;
 
 class Bank {
 	//BankAccount bankAccount[100];
@@ -66,5 +64,9 @@ public:
 	void PrintAccInfo(); 
 
 };
+
+
+BankAccount Account[100];
+int nTotal_Account = 0;
 
 //BankAccount::num_of_accounts = 0;

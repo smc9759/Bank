@@ -1,0 +1,8 @@
+*.suo
+*.db
+*.VC
+*.obj
+*.pdb
+*.exe
+*.idb
+*.log

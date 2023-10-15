@@ -65,14 +65,14 @@ void BankAccount::CInit(int id, const char* name, int money) {
 
 void BankAccount::Deposit() {
 	int id, money;
-	
+
 	cout << "[입    금]" << endl;
 	cout << "계좌ID: "; cin >> id;
 
 	cout << "입금액: "; cin >> money;
 
 
-	cout << "입금완료"; 
+	cout << "입금완료";
 	cout << endl;
 }
 void BankAccount::WithDraw() {
@@ -123,7 +123,7 @@ void CDeposit() {
 	cout << "입금액: "; cin >> money;
 
 	for (int i = 0; i < nTotal_Account; i++) {
-		if (Account[i].AccNo == id){
+		if (Account[i].AccNo == id) {
 			Account[i].money += money;
 			cout << "입금완료";
 		}
@@ -132,11 +132,38 @@ void CDeposit() {
 }
 
 void CWithDraw() {
+	int id, money;
 
+	cout << "[출   금]" << endl;
+	cout << "계좌ID: "; cin >> id;
+	cout << "출금액: "; cin >> money;
+
+	for (int i = 0; i <nTotal_Account; i++) {
+		if (Account[i].AccNo == id) {
+			if (Account[i].money < money;)
+			{
+				cout << "잔액부족" << endl;
+				return;
+			}
+			Account[i].money -= money;
+			cout << "출금완료" << endl;
+			return;
+		}
+
+	}
+	cout << "ID 재확인" << endl;
 }
 
 void CInfo() {
-
+	cout << "[전체 계좌정보 출력]" << endl;
+	cout << endl;
+	for (int i = 0; i<nTotal_Account; i++)
+	{
+		cout << "계좌ID: " << Account[i].AccNo << endl;
+		cout << "이 름: " << Account[i].ClientName << endl;
+		cout << "잔 액: " << Account[i].money << endl;
+		cout << endl;
+	}
 }
 
 int main()
@@ -144,7 +171,7 @@ int main()
 	int choice;
 	bool m_bExit = false;
 
-	do{
+	do {
 		CShowMenu();
 		cout << "선택: ";
 		cin >> choice;

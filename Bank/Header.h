@@ -29,7 +29,6 @@ public:
 
 class BankAccount 
 {
-public:
 	int AccNo;
 	char* ClientName;
 	int   money;
@@ -54,19 +53,37 @@ public:
 	}
 	void ShowMenu();
 	void SelectMenu();
-
-
 	void Make_Acc();
-	void Deposit();
+	void Deposit(int money);
 	void WithDraw();
 	void CInit(int id, const char* name, int money);
-
 	void PrintAccInfo(); 
+
+	int getAccNo() {
+		return AccNo;
+	}
+	void setAccNo(int id) {
+		AccNo = id;
+	}
+	char* getClientName() {
+		return ClientName;
+	}
+	void setClientName(const char* name) {
+		int len = strlen(name) + 1;
+		ClientName = new char[len];
+		strcpy(ClientName, name);
+	}
+	int getMoney() {
+		return money;
+	}
+	void setMoney(int money) {
+		this->money = money;
+	}
 
 };
 
 
-BankAccount Account[100];
+BankAccount* Account[100];
 int nTotal_Account = 0;
 
 //BankAccount::num_of_accounts = 0;

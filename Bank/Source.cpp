@@ -65,17 +65,8 @@ void BankAccount::CInit(int id, const char* name, int money) {
 
 }
 
-void BankAccount::Deposit() {
-	int id, money;
-
-	cout << "[입    금]" << endl;
-	cout << "계좌ID: "; cin >> id;
-
-	cout << "입금액: "; cin >> money;
-
-
-	cout << "입금완료";
-	cout << endl;
+void BankAccount::Deposit(int money) {
+	this->money += money;
 }
 void BankAccount::WithDraw() {
 
@@ -111,8 +102,7 @@ void CMake() {
 	cout << "입금액: "; cin >> money;
 	cout << endl;
 
-	Account[nTotal_Account].CInit(id, name, money);
-	nTotal_Account++;
+	Account[nTotal_Account++] = new BankAccount(id, name, money);
 
 }
 
@@ -125,8 +115,8 @@ void CDeposit() {
 	cout << "입금액: "; cin >> money;
 
 	for (int i = 0; i < nTotal_Account; i++) {
-		if (Account[i].AccNo == id) {
-			Account[i].money += money;
+		if (Account[i]->getAccNo() == id) {
+			Account[i]->Deposit(money);
 			cout << "입금완료";
 		}
 	}
@@ -141,13 +131,13 @@ void CWithDraw() {
 	cout << "출금액: "; cin >> money;
 
 	for (int i = 0; i <nTotal_Account; i++) {
-		if (Account[i].AccNo == id) {
-			if (Account[i].money < money)
+		if (Account[i]->getAccNo() == id) {
+			if (Account[i]->getMoney() < money)
 			{
 				cout << "잔액부족" << endl;
 				return;
 			}
-			Account[i].money -= money;
+			Account[i]->setMoney(-money);
 			cout << "출금완료" << endl;
 			return;
 		}
@@ -161,9 +151,9 @@ void CInfo() {
 	cout << endl;
 	for (int i = 0; i<nTotal_Account; i++)
 	{
-		cout << "계좌ID: " << Account[i].AccNo << endl;
-		cout << "이 름: " << Account[i].ClientName << endl;
-		cout << "잔 액: " << Account[i].money << endl;
+		cout << "계좌ID: " << Account[i]->getAccNo() << endl;
+		cout << "이 름: " << Account[i]->getClientName() << endl;
+		cout << "잔 액: " << Account[i]->getMoney() << endl;
 		cout << endl;
 	}
 }

@@ -51,6 +51,12 @@ public:
 
 		this->money = money;
 	}
+	BankAccount(const BankAccount& ref) : AccNo(ref.AccNo), money(ref.money){
+		int len = strlen(ref.ClientName) + 1;
+		ClientName = new char[len];
+		strcpy(ClientName, ref.ClientName);
+
+	}
 	void ShowMenu();
 	void SelectMenu();
 	void Make_Acc();

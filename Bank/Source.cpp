@@ -59,6 +59,8 @@ void BankAccount::CInit(int id, const char* name, int money) {
 	AccNo = id;
 	this->money = money;
 
+	int len = strlen(name) + 1;
+	ClientName = new char[len];
 	strcpy(ClientName, name);
 
 }
@@ -190,11 +192,11 @@ int main()
 		}
 		case BANK_MENU::WITHDRAW:
 		{
-			//CWithDraw();
+			CWithDraw();
 		}
 		case BANK_MENU::INFO:
 		{
-			//CInfo();
+			CInfo();
 			break;
 		}
 		case BANK_MENU::EXIT:

@@ -140,7 +140,7 @@ void CWithDraw() {
 
 	for (int i = 0; i <nTotal_Account; i++) {
 		if (Account[i].AccNo == id) {
-			if (Account[i].money < money;)
+			if (Account[i].money < money)
 			{
 				cout << "ÀÜ¾×ºÎÁ·" << endl;
 				return;

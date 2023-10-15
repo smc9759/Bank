@@ -55,7 +55,7 @@ public:
 	void SelectMenu();
 	void Make_Acc();
 	void Deposit(int money);
-	void WithDraw();
+	void WithDraw(int money);
 	void CInit(int id, const char* name, int money);
 	void PrintAccInfo(); 
 

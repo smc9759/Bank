@@ -68,8 +68,15 @@ void BankAccount::CInit(int id, const char* name, int money) {
 void BankAccount::Deposit(int money) {
 	this->money += money;
 }
-void BankAccount::WithDraw() {
+void BankAccount::WithDraw(int money) {
+	if (this->money < money) {
+		cout << "잔액부족" << endl;
+		return;
+	}
+	this->money -= money;
 
+	cout << "출금완료" << endl;
+	return;
 }
 void BankAccount::PrintAccInfo() {
 	cout << "계좌ID: " << AccNo << endl;
@@ -132,13 +139,7 @@ void CWithDraw() {
 
 	for (int i = 0; i <nTotal_Account; i++) {
 		if (Account[i]->getAccNo() == id) {
-			if (Account[i]->getMoney() < money)
-			{
-				cout << "잔액부족" << endl;
-				return;
-			}
-			Account[i]->setMoney(-money);
-			cout << "출금완료" << endl;
+			Account[i]->WithDraw(money);
 			return;
 		}
 
@@ -183,6 +184,7 @@ int main()
 		case BANK_MENU::WITHDRAW:
 		{
 			CWithDraw();
+			break;
 		}
 		case BANK_MENU::INFO:
 		{
